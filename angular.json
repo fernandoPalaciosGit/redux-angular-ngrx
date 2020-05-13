@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "redux-angular-ngrx"
+    }
+  },
+  "defaultProject": "redux-angular-ngrx",
+  "cli": {
+    "analytics": "439c8861-8938-4b80-b50a-5c0ae2bfaba7"
+  }
 }
