@@ -1,3 +1,14 @@
 <div>
   Counter: {{counter$ | async}}
 </div>
+
+<div class="modify-counter-types-wrapper">
+  <app-modify-counter
+    actionType='INCREMENT'>
+  </app-modify-counter>
+  <app-modify-counter
+    actionType="DECREMENT">
+  </app-modify-counter>
+  <app-modify-counter-payload>
+  </app-modify-counter-payload>
+</div>
