@@ -4,14 +4,18 @@
 
 <div class="modify-counter-types-wrapper">
   <app-modify-counter
-    reducerActionType='RESET'>
+    [counterAction]='resetAction'
+    title="reset counter">
   </app-modify-counter>
   <app-modify-counter
-    reducerActionType='INCREMENT'>
+    [counterAction]='incrementAction'
+    title="increment counter">
   </app-modify-counter>
   <app-modify-counter
-    reducerActionType="DECREMENT">
+    [counterAction]='decrementAction'
+    title="decrement counter">
   </app-modify-counter>
-  <app-modify-counter-payload>
+  <app-modify-counter-payload
+    title="apply counter">
   </app-modify-counter-payload>
 </div>

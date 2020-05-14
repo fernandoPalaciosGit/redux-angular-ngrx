@@ -1,16 +1,21 @@
-import { COUNTER_ACTIONS } from './counter.actions';
-import { PayloadAction } from './models/payload';
+import {
+  CounterActions,
+  DECREMENT_COUNTER_TYPE,
+  INCREMENT_COUNTER_TYPE,
+  PAYLOAD_COUNTER_TYPE,
+  RESET_COUNTER_TYPE
+} from './counter.actions';
 
 const INIT_STATE = 0;
-export const counterReducer = (state: number = INIT_STATE, action: PayloadAction) => {
+export const counterReducer = (state: number = INIT_STATE, action: CounterActions) => {
   switch (action.type) {
-    case COUNTER_ACTIONS.INCREMENT.type:
+    case INCREMENT_COUNTER_TYPE:
       return ++state;
-    case COUNTER_ACTIONS.DECREMENT.type:
+    case DECREMENT_COUNTER_TYPE:
       return --state;
-    case COUNTER_ACTIONS.PAYLOAD.type:
+    case PAYLOAD_COUNTER_TYPE:
       return state += action.payload;
-    case COUNTER_ACTIONS.RESET.type:
+    case RESET_COUNTER_TYPE:
       return INIT_STATE;
     default:
       return state;

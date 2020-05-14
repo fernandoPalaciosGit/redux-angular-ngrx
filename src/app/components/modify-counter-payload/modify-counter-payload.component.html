@@ -1,5 +1,6 @@
 <form [formGroup]="counterForm" novalidate
       (ngSubmit)="updateCounter()">
   <input type="number" formControlName="counter">
-  <input type="submit" value="apply counter">
+  <input type="submit" value="{{title}}"
+         [disabled]="counterForm.pristine">
 </form>

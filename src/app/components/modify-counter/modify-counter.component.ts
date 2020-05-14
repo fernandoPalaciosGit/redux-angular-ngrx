@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Action, Store } from '@ngrx/store';
 import { AppState } from '../../../redux/models/state';
-import { COUNTER_ACTIONS } from '../../../redux/counter/counter.actions';
 
 @Component({
   selector: 'app-modify-counter',
@@ -9,8 +8,8 @@ import { COUNTER_ACTIONS } from '../../../redux/counter/counter.actions';
   styleUrls: ['./modify-counter.component.scss']
 })
 export class ModifyCounterComponent implements OnInit {
-  @Input() reducerActionType: string;
-  private action: Action;
+  @Input() counterAction: Action;
+  @Input() title: string;
 
   constructor(
     private store: Store<AppState>
@@ -18,10 +17,9 @@ export class ModifyCounterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.action = COUNTER_ACTIONS[this.reducerActionType];
   }
 
   modifyCounter() {
-    this.store.dispatch(this.action);
+    this.store.dispatch(this.counterAction);
   }
 }
