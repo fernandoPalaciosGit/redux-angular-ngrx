@@ -9,5 +9,8 @@ export const COUNTER_ACTIONS: CounterActions = {
   },
   PAYLOAD: {
     type: '[Counter] increment or decrement counter'
+  },
+  RESET: {
+    type: '[Counter] initialize the counter state'
   }
 };

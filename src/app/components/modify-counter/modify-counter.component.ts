@@ -9,7 +9,7 @@ import { COUNTER_ACTIONS } from '../../../redux/counter/counter.actions';
   styleUrls: ['./modify-counter.component.scss']
 })
 export class ModifyCounterComponent implements OnInit {
-  @Input() actionType: string;
+  @Input() reducerActionType: string;
   private action: Action;
 
   constructor(
@@ -18,7 +18,7 @@ export class ModifyCounterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.action = COUNTER_ACTIONS[this.actionType];
+    this.action = COUNTER_ACTIONS[this.reducerActionType];
   }
 
   modifyCounter() {
