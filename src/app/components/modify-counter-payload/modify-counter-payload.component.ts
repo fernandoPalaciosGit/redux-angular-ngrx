@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../redux/models/state';
 import { PayloadAction } from '../../../redux/counter/models/payload';
@@ -10,9 +10,13 @@ import { COUNTER_ACTIONS } from '../../../redux/counter/counter.actions';
   templateUrl: './modify-counter-payload.component.html',
   styleUrls: ['./modify-counter-payload.component.scss']
 })
-export class ModifyCounterPayloadComponent implements OnInit {
+export class ModifyCounterPayloadComponent implements OnInit, AfterViewInit {
   counterForm: FormGroup;
   private readonly INIT_COUNTER = 0;
+  private counterAction: PayloadAction = {
+    type: COUNTER_ACTIONS.PAYLOAD.type,
+    payload: 0
+  };
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,18 +30,15 @@ export class ModifyCounterPayloadComponent implements OnInit {
     });
   }
 
-  updateCounter($event: Event) {
-    this.store.dispatch(this.getCounterAction());
+  ngAfterViewInit(): void {
+    this.getCounterControl().valueChanges.subscribe((value) => this.counterAction.payload = value);
   }
 
-  private getCounterValue(): number {
-    return this.counterForm.get('counter').value;
+  updateCounter() {
+    this.store.dispatch({...this.counterAction});
   }
 
-  private getCounterAction(): PayloadAction {
-    return {
-      type: COUNTER_ACTIONS.PAYLOAD.type,
-      payload: this.getCounterValue()
-    };
+  private getCounterControl(): AbstractControl {
+    return this.counterForm.get('counter');
   }
 }
